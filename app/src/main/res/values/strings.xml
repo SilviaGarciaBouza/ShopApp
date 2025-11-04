@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">ShopApp</string>
+<!--ProductNames-->
+    <string name="product_coke">Coca-Cola</string>
+    <string name="product_milk">Leche</string>
+    <string name="product_nescafe">Nescafé</string>
+    <string name="product_strawberry">Fresa</string>
+    <string name="product_lemon">Limón</string>
+    <string name="product_mulberry">Mora</string>
+    <string name="product_onions">Cebollas</string>
+    <string name="product_potatoes">Patatas</string>
+    <string name="product_rice">Arroz</string>
+    <string name="product_protein">Proteína en polvo</string>
+
+    <string name="item_lamp">Lámpara</string>
+    <string name="item_decoration_swing">Columpio decorativo</string>
+    <string name="item_photo_frame">Marco de fotos</string>
+    <string name="item_plant">Planta</string>
+    <string name="item_pot_plant">Planta en maceta</string>
+
+</resources>
