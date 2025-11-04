@@ -34,10 +34,12 @@ fun ProductNav(prodviewModel: ProductViewModel= viewModel()) {
             arguments = listOf(navArgument(name="id") {type = NavType.IntType})
             ) {backStackEntry ->
             val id= backStackEntry.arguments?.getInt("id") ?: 0
-            ProductDetailScreen({navController.navigate("buy")},amount = viewModel.totalAmount,viewModel.listProductsState[id],{navController.popBackStack()},)
+            ProductDetailScreen({navController.navigate("buy")},amount = viewModel.totalAmount,viewModel.listProductsState[id],{navController.popBackStack()}, {product, quantity -> prodviewModel.addTocart(product,quantity)})
         }
         composable(route= "buy") {
             BuyScreen(onCero = {prodviewModel.amountCero()}, amount = viewModel.totalAmount, price = viewModel.totalAmount,{navController.popBackStack()})
         }
+
+
     }
 }
