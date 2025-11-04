@@ -12,8 +12,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.github.shopapp.ui.components.BuyComponent
 import com.github.shopapp.ui.components.ListComponent
 import com.github.shopapp.ui.components.ProductDetailComponent
+import com.github.shopapp.ui.screeens.BuyScreen
 import com.github.shopapp.ui.screeens.ListScreen
 import com.github.shopapp.vewmodel.ProductViewModel
 
@@ -26,13 +28,16 @@ fun ProductNav(prodviewModel: ProductViewModel= viewModel()) {
         navController = navController,
         startDestination = "list"){
         composable(route= "list") {
-            ListScreen(amount = viewModel.totalAmount,viewModel.listProductsState, {navController.popBackStack()}, {id ->navController.navigate("detail/$id")}, {id->prodviewModel.addChangeAmount(id)})
+            ListScreen({navController.navigate("buy")},amount = viewModel.totalAmount,viewModel.listProductsState, {navController.popBackStack()}, {id ->navController.navigate("detail/$id")}, {id->prodviewModel.addChangeAmount(id)},{id->prodviewModel.lessChangeAmount(id)})
         }
         composable(route= "detail/{id}",
             arguments = listOf(navArgument(name="id") {type = NavType.IntType})
             ) {backStackEntry ->
             val id= backStackEntry.arguments?.getInt("id") ?: 0
-            ProductDetailScreen(amount = viewModel.totalAmount,viewModel.listProductsState[id],{navController.popBackStack()},)
+            ProductDetailScreen({navController.navigate("buy")},amount = viewModel.totalAmount,viewModel.listProductsState[id],{navController.popBackStack()},)
+        }
+        composable(route= "buy") {
+            BuyScreen(onCero = {prodviewModel.amountCero()}, amount = viewModel.totalAmount, price = viewModel.totalAmount,{navController.popBackStack()})
         }
     }
 }

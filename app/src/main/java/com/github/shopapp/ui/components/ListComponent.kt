@@ -11,11 +11,11 @@ import androidx.compose.ui.unit.dp
 import com.github.shopapp.data.Product
 
 @Composable
-fun ListComponent(listProduct: List<Product>, modifier: Modifier, onclick: (Int)->Unit,onclickamount: (Int)->Unit){
+fun ListComponent(listProduct: List<Product>, modifier: Modifier, onclick: (Int)->Unit,onclickamount: (Int)->Unit,onclilessckamount: (Int)->Unit){
     LazyColumn(modifier = modifier.fillMaxSize().padding(4.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
         items(listProduct.size){
             index ->
-            ItemCardComponent(listProduct[index],{onclick(index)} , {index -> onclickamount(index)})
+            ItemCardComponent(listProduct[index],{onclick(index)} , {index -> onclickamount(index)},{index -> onclilessckamount(index)})
         }
     }
 }

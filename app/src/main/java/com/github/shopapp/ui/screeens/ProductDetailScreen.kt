@@ -8,9 +8,9 @@ import com.github.shopapp.ui.components.ProductDetailComponent
 import com.github.shopapp.ui.components.TipAppBar
 
 @Composable
-fun ProductDetailScreen(amount: Double,product: Product, onBackClick:()->Unit){
+fun ProductDetailScreen(onb:()->Unit,amount: Double,product: Product, onBackClick:()->Unit){
     Scaffold(
-        topBar = {TipAppBar(amount= amount,modifier = Modifier, true, onBackClick,{})}
+        topBar = {TipAppBar(onb={onb()},amount= amount,modifier = Modifier, true, onBackClick,{})}
     ) {
         paddingValues ->
         ProductDetailComponent(product= product, modifier= Modifier.padding(paddingValues))

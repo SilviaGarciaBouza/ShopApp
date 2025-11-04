@@ -30,7 +30,7 @@ import com.github.shopapp.ui.theme.Typography
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TipAppBar(amount: Double ,modifier: Modifier= Modifier,isBackIcon:Boolean, onBackClick:()->Unit,onclickPrice:()->Unit) {
+fun TipAppBar(onb:()->Unit?,amount: Double ,modifier: Modifier= Modifier,isBackIcon:Boolean, onBackClick:()->Unit,onclickPrice:()->Unit) {
     TopAppBar(modifier = modifier.background(Color.Red),
        title = { Text(stringResource(R.string.app_name)) },
         actions = {
@@ -39,7 +39,7 @@ fun TipAppBar(amount: Double ,modifier: Modifier= Modifier,isBackIcon:Boolean, o
                 imageVector = Icons.Default.ShoppingCart,
                 contentDescription = "",
                 tint = Color.Black,
-                modifier = Modifier.clickable { onclickPrice() }.padding(22.dp)
+                modifier = Modifier.clickable { onb() }.padding(22.dp)
             )
         },
         navigationIcon = {

@@ -31,7 +31,7 @@ import androidx.compose.ui.unit.dp
 import com.github.shopapp.data.Product
 
 @Composable
-fun ItemCardComponent(product: Product, onclick: (Int)->Unit, onclickamount: (Int)->Unit) {
+fun ItemCardComponent(product: Product, onclick: (Int)->Unit, onclickamount: (Int)->Unit, onclicklessamount: (Int)->Unit) {
     var quantity by rememberSaveable { mutableStateOf(0) }
 
     Card(modifier = Modifier.fillMaxSize().height(100.dp).clickable{onclick(product.id)} ) {
@@ -49,7 +49,7 @@ fun ItemCardComponent(product: Product, onclick: (Int)->Unit, onclickamount: (In
             Spacer(modifier = Modifier.weight(1f))
             //AddProductComponent(quantity, {quantity--}, {quantity++}, onclickamount(product.id))
             Row(modifier = Modifier) {
-                Icon(imageVector = Icons.Filled.KeyboardArrowDown, contentDescription = "Add", modifier = Modifier.clickable{quantity--})
+                Icon(imageVector = Icons.Filled.KeyboardArrowDown, contentDescription = "Add", modifier = Modifier.clickable{if(quantity-- > 0) {onclicklessamount(product.id) }else quantity=0})
                 Text(text = "${quantity}")
                 Icon(imageVector =  Icons.Filled.KeyboardArrowUp, contentDescription = "Add", modifier = Modifier.clickable{quantity++; onclickamount(product.id)})
 

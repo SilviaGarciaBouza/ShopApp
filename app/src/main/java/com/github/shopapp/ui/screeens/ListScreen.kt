@@ -10,11 +10,11 @@ import com.github.shopapp.ui.components.ListComponent
 import com.github.shopapp.ui.components.TipAppBar
 
 @Composable
-fun ListScreen(amount: Double,listProducts: List<Product>, onBackClick:()->Unit,onclick:(Int)->Unit,onclickamount: (Int)->Unit) {
+fun ListScreen(onb:()->Unit,amount: Double,listProducts: List<Product>, onBackClick:()->Unit,onclick:(Int)->Unit,onclickamount: (Int)->Unit,onclilessckamount: (Int)->Unit) {
     Scaffold(
-        topBar ={ TipAppBar(amount=amount,modifier = Modifier, false, onBackClick,{})}
+        topBar ={ TipAppBar(onb={onb()},amount=amount,modifier = Modifier, false, onBackClick,{})}
     ) {
         paddingValues ->
-        ListComponent(listProducts, Modifier.padding(paddingValues), {index -> onclick(index)},{index -> onclickamount(index)})
+        ListComponent(listProducts, Modifier.padding(paddingValues), {index -> onclick(index)},{index -> onclickamount(index)},{index -> onclilessckamount(index)})
     }
 }

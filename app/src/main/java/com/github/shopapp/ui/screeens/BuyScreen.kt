@@ -4,17 +4,15 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import com.github.shopapp.ui.components.BuyComponent
 import com.github.shopapp.ui.components.TipAppBar
-import com.github.shopapp.ui.components.TipComponent
 
 @Composable
-fun TipScreen(amount: Double,modifier: Modifier,onBackClick:()->Unit) {
+fun BuyScreen(onCero:()->Unit,amount:Double,price:Double, ovback:()->Unit) {
     Scaffold(
-        topBar = { TipAppBar(onb={},amount=amount,modifier= Modifier, true, onBackClick,{}) }
+        topBar ={ TipAppBar(onb={},amount=amount,modifier = Modifier, true, ovback,{})}
     ) { paddingValues ->
-        TipComponent(modifier= Modifier.padding(paddingValues));
-
+        BuyComponent({onCero()},price, Modifier.padding(paddingValues))
 
     }
 }
-

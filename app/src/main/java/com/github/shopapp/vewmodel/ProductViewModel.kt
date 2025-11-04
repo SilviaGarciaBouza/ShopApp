@@ -20,6 +20,17 @@ class ProductViewModel: ViewModel() {
         }
     }
 
+    public fun lessChangeAmount(productId: Int){
+        val product = listProducts.find { it.id == productId }
+        product?.let {
+            val updateAmount:Double = if ( (_listState.value.totalAmount - it.price) >= 0.0) _listState.value.totalAmount - it.price else 0.0
+            _listState.value = _listState.value.copy(totalAmount = updateAmount)
+        }
+    }
+    public fun amountCero(){
+        _listState.value=_listState.value.copy(totalAmount = 0.0)
+    }
+
 
 
 
