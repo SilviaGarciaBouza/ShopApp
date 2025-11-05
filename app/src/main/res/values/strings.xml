@@ -17,5 +17,6 @@
     <string name="item_photo_frame">Marco de fotos</string>
     <string name="item_plant">Planta</string>
     <string name="item_pot_plant">Planta en maceta</string>
+    <string name="item">Item</string>
 
 </resources>
